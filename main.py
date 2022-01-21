@@ -22,9 +22,9 @@ def remove_old_data() -> None:
     streamers_interval = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=2)
     print(f"streamers_interval: {streamers_interval}")
     print("removing old streams")
-    connection.db.stream_crawler.stream.delete_many({"updated_at": {"$lt": streams_interval}})
+    connection.db.stream_crawler.stream.delete_many({"updated_at": {"$lt": str(streams_interval)}})
     print("removing old streamers")
-    connection.db.stream_crawler.streamer.delete_many({"updated_at": {"$lt": streamers_interval}})
+    connection.db.stream_crawler.streamer.delete_many({"updated_at": {"$lt": str(streamers_interval)}})
 
 
 def generate_removing(entitys: list, unique_id: str) -> list:
