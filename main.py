@@ -17,10 +17,12 @@ def duplicate_to_remove(entities: list, unique_id: str):
 
 
 def remove_old_data() -> None:
-    stream_interval = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(hours=1)
+    streams_interval = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(hours=1)
+    print(f"streams_interval: {streams_interval}")
     streamers_interval = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=2)
+    print(f"streamers_interval: {streamers_interval}")
     print("removing old streams")
-    connection.db.stream_crawler.stream.delete_many({"updated_at": {"$lt": stream_interval}})
+    connection.db.stream_crawler.stream.delete_many({"updated_at": {"$lt": streams_interval}})
     print("removing old streamers")
     connection.db.stream_crawler.streamer.delete_many({"updated_at": {"$lt": streamers_interval}})
 
