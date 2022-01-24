@@ -54,7 +54,11 @@ def run() -> None:
 
 try:
     while True:
-        run()
+        try:
+            run()
+        except Exception as e:
+            print(e)
+            run()
         time.sleep(1)
 except KeyboardInterrupt:
     connection.close()
