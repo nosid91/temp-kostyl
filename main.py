@@ -17,7 +17,7 @@ def duplicate_to_remove(entities: list, unique_id: str):
 
 
 def remove_old_data() -> None:
-    streams_interval = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(hours=1)
+    streams_interval = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(minutes=20)
     print(f"streams_interval: {streams_interval}")
     streamers_interval = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=2)
     print(f"streamers_interval: {streamers_interval}")
